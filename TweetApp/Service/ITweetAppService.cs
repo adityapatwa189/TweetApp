@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TweetApp.Entities;
+using User = TweetApp.Entities.User;
 
 namespace TweetAPP.Service
 {

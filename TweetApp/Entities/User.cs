@@ -9,7 +9,7 @@ namespace TweetApp.Entities
     {
         public User()
         {
-            Tweets = new HashSet<Tweet>();
+            //Tweets = new HashSet<Tweet>();
         }
 
         public int UserId { get; set; }
@@ -20,6 +20,6 @@ namespace TweetApp.Entities
         public DateTime? Dob { get; set; }
         public string Password { get; set; }
 
-        public virtual ICollection<Tweet> Tweets { get; set; }
+        //public virtual ICollection<Tweet> Tweets { get; set; }
     }
 }

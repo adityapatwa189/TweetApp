@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using User=TweetApp.Entities.User;
 using TweetApp.Entities;
-
 
 namespace TweetAPP.Repositories
 {
@@ -69,9 +69,9 @@ namespace TweetAPP.Repositories
             Tweet tweets = new Tweet();
             if (tweet != null)
             {
-                tweets.Id = tweet.Id;
+                //tweets.Id = tweet.Id;
                 tweets.UserId = tweet.UserId;
-                tweets.Tweeets = tweet.Tweeets;
+                tweets.Tweets = tweet.Tweets;
             }
             dbcontext.Tweets.Add(tweets);
             var result = await dbcontext.SaveChangesAsync();

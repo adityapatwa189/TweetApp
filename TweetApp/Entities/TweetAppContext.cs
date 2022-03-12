@@ -35,45 +35,59 @@ namespace TweetApp.Entities
             {
                 entity.ToTable("Tweet");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Created)
+                    .HasColumnType("datetime")
+                    .HasColumnName("created")
+                    .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.Tweeets)
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
+                entity.Property(e => e.Tweets)
+                    .IsRequired()
+                    .HasMaxLength(150)
+                    .IsUnicode(false)
+                    .HasColumnName("Tweet");
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Tweets)
-                    .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Tweet__UserId__1A14E395");
+                //entity.HasOne(d => d.User)
+                //    .WithMany(p => p.Tweets)
+                //    .HasPrincipalKey(p => p.UserId)
+                //    .HasForeignKey(d => d.UserId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK_Tweet_User");
             });
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.Property(e => e.UserId).ValueGeneratedNever();
+                entity.HasKey(e => e.EmailId)
+                    .HasName("PK_Table1");
 
-                entity.Property(e => e.Dob)
-                    .HasColumnType("datetime")
-                    .HasColumnName("DOB");
+                entity.ToTable("User");
+
+                entity.HasIndex(e => e.UserId, "unique key userid")
+                    .IsUnique();
 
                 entity.Property(e => e.EmailId)
-                    .HasMaxLength(20)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Dob).HasColumnType("date");
+
                 entity.Property(e => e.FirstName)
-                    .HasMaxLength(20)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Gender)
-                    .HasMaxLength(20)
+                    .HasMaxLength(10)
                     .IsUnicode(false);
 
                 entity.Property(e => e.LastName)
-                    .HasMaxLength(20)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Password)
-                    .HasMaxLength(20)
+                    .IsRequired()
+                    .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.UserId).ValueGeneratedOnAdd();
             });
 
             OnModelCreatingPartial(modelBuilder);

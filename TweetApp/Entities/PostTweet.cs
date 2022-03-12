@@ -9,8 +9,8 @@ namespace TweetApp.Entities
     {
         public int Id { get; set; }
 
-        public int? UserId { get; set; }
+        public int UserId { get; set; }
 
-        public string Tweeets { get; set; }
+        public string Tweets { get; set; }
     }
 }

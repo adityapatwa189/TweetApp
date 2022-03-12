@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TweetApp.Entities;
+using User = TweetApp.Entities.User;
 using TweetAPP.Repositories;
 
 namespace TweetAPP.Service

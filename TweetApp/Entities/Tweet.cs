@@ -8,9 +8,10 @@ namespace TweetApp.Entities
     public partial class Tweet
     {
         public int Id { get; set; }
-        public int? UserId { get; set; }
-        public string Tweeets { get; set; }
+        public string Tweets { get; set; }
+        public int UserId { get; set; }
+        public DateTime? Created { get; set; }
 
-        public virtual User User { get; set; }
+        //public virtual User User { get; set; }
     }
 }
