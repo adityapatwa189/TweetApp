@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TweetApp.Entities;
-using User = TweetApp.Entities.User;
-using TweetAPP.Repositories;
+using com.TweetApp.Entities;
+using User = com.TweetApp.Entities.User;
+using com.TweetApp.Repositories;
+using com.TweetApp.Modals;
+using com.TweetApp.global;
 
-namespace TweetAPP.Service
+namespace com.TweetApp.Service
 {
     public class TweetAppService : ITweetAppService
     {
@@ -51,11 +53,12 @@ namespace TweetAPP.Service
             }
         }
 
-        public async Task<IList<User>> GetAllUsers()
+        public async Task<IList<UserDTO>> GetAllUsers()
         {
             try
             {
-                var result = await this.tweetRepository.GetAllUsers();
+                var users = await this.tweetRepository.GetAllUsers();
+                var result=AutoMapper.MapUserDTO(users);
                 return result;
             }
             catch (Exception ex)

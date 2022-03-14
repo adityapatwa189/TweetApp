@@ -1,25 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-#nullable disable
-
-namespace TweetApp.Entities
+namespace com.TweetApp.Modals
 {
-    public partial class User
+    public class UserDTO
     {
-        public User()
-        {
-            //Tweets = new HashSet<Tweet>();
-        }
-
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailId { get; set; }
         public string Gender { get; set; }
         public DateTime? Dob { get; set; }
-        public string Password { get; set; }
-
-        //public virtual ICollection<Tweet> Tweets { get; set; }
     }
 }

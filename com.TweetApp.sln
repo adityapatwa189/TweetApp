@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TweetApp", "TweetApp\TweetApp.csproj", "{524E54E5-3A6C-4088-87D1-E9144377BAEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.TweetApp", "TweetApp\com.TweetApp.csproj", "{524E54E5-3A6C-4088-87D1-E9144377BAEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

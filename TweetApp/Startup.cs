@@ -5,11 +5,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TweetAPP.Repositories;
-using TweetAPP.Service;
+using com.TweetApp.Repositories;
+using com.TweetApp.Service;
 using Microsoft.OpenApi.Models;
-using TweetAPP.Exceptions;
-using TweetApp.Entities;
+using com.TweetApp.Exceptions;
+using com.TweetApp.Entities;
+using System.Reflection;
+using System.IO;
+using System;
 
 namespace TweetAPP
 {
@@ -48,7 +51,8 @@ namespace TweetAPP
                     Title = "TWEET APP",
                     Description = "Tweet API",
                 });
-
+                var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
             });
             services.AddMvc(
                 config =>
@@ -56,6 +60,7 @@ namespace TweetAPP
                     config.Filters.Add(typeof(CustomException));
                 }
             );
+            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

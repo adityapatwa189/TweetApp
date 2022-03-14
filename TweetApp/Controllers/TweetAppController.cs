@@ -5,11 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using TweetApp.Entities;
-using User = TweetApp.Entities.User;
-using TweetAPP.Service;
+using com.TweetApp.Entities;
+using User = com.TweetApp.Entities.User;
+using com.TweetApp.Service;
+using com.TweetApp.Modals;
+using Swashbuckle.AspNetCore.Annotations;
+using System.Net;
 
-namespace TweetAPP.Controller
+namespace com.TweetApp.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -27,8 +30,8 @@ namespace TweetAPP.Controller
         /// <summary>
         /// Register User
         /// </summary>
-        /// <param name="user">user.</param>
-        /// <returns>response.</returns>
+        /// <param name="user">user</param>
+        /// <returns>response message</returns>
         [HttpPost]
         [Route("Register")]
         public async Task<IActionResult> Register([FromBody] User user)
@@ -45,11 +48,12 @@ namespace TweetAPP.Controller
             }
         }
         /// <summary>
-        /// user tweets.
+        /// tweets by a specific user.
         /// </summary>
         /// <param name="userId"></param>
-        /// <returns></returns>
+        /// <returns>List of tweets.</returns>
         [HttpGet]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Tweet>))]
         [Route("usertweets")]
         public async Task<IActionResult> GetTweetsByUser(int userId)
         {
@@ -68,8 +72,9 @@ namespace TweetAPP.Controller
         /// <summary>
         /// Login User
         /// </summary>
-        /// <param name="user">user.</param>
-        /// <returns>response.</returns>
+        /// <param name="emailID"></param>
+        /// <param name="password"></param>
+        /// <returns>response message.</returns>
         [HttpGet]
         [Route("Login")]
         public async Task<IActionResult> Login(string emailID, string password)
@@ -87,10 +92,10 @@ namespace TweetAPP.Controller
         }
 
         /// <summary>
-        /// Post Tweet.
+        /// Post new Tweet.
         /// </summary>
-        /// <param name="tweet">tweet.</param>
-        /// <returns>response.</returns>
+        /// <param name="tweet"></param>
+        /// <returns>response message.</returns>
         [HttpPost]
         [Route("tweet")]
         public async Task<IActionResult> Tweet(PostTweet tweet)
@@ -110,8 +115,9 @@ namespace TweetAPP.Controller
         /// <summary>
         /// Get All Users
         /// </summary>
-        /// <returns>response.</returns>
+        /// <returns>list of users.</returns>
         [HttpGet]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<UserDTO>))]
         [Route("allusers")]
         public async Task<IActionResult> GetAllUsers()
         {
@@ -147,8 +153,15 @@ namespace TweetAPP.Controller
                 throw;
             }
         }
-
+        /// <summary>
+        /// update password.
+        /// </summary>
+        /// <param name="emailId"></param>
+        /// <param name="oldpassword"></param>
+        /// <param name="newPassword"></param>
+        /// <returns>response</returns>
         [HttpPut]
+        //[SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(string))]
         [Route("updatepassword")]
         public async Task<IActionResult> UpdatePassword(string emailId, string oldpassword, string newPassword)
         {
@@ -167,8 +180,9 @@ namespace TweetAPP.Controller
         /// <summary>
         /// Get All Tweets.
         /// </summary>
-        /// <returns>response.</returns>
+        /// <returns>list of tweets.</returns>
         [HttpGet]
+        [SwaggerResponse((int)HttpStatusCode.OK,Type= typeof(List<Tweet>))]
         [Route("alltweets")]
         public async Task<IActionResult> GetAllTweets()
         {

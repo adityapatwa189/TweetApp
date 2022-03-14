@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TweetApp.Entities;
-using User=TweetApp.Entities.User;
+using com.TweetApp.Entities;
+using com.TweetApp.Modals;
+using User=com.TweetApp.Entities.User;
 
-namespace TweetAPP.Repositories
+namespace com.TweetApp.Repositories
 {
     public interface ITweetRepository
     {

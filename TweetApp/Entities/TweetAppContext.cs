@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace TweetApp.Entities
+namespace com.TweetApp.Entities
 {
     public partial class TweetAppContext : DbContext
     {

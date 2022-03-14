@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace TweetApp.Entities
+namespace com.TweetApp.Entities
 {
     public partial class Tweet
     {

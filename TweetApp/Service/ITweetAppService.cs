@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TweetApp.Entities;
-using User = TweetApp.Entities.User;
+using com.TweetApp.Entities;
+using com.TweetApp.Modals;
+using User = com.TweetApp.Entities.User;
 
-namespace TweetAPP.Service
+namespace com.TweetApp.Service
 {
     public interface ITweetAppService
     {
@@ -17,7 +18,7 @@ namespace TweetAPP.Service
 
         Task<IList<Tweet>> GetTweetsByUser(int userID);
 
-        Task<IList<User>> GetAllUsers();
+        Task<IList<UserDTO>> GetAllUsers();
 
         Task<string> PostTweet(PostTweet tweet);
 

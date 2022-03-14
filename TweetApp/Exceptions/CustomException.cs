@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace TweetAPP.Exceptions
+namespace com.TweetApp.Exceptions
 {
     public class CustomException : IExceptionFilter
     {
